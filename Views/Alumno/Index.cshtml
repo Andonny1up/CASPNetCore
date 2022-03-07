@@ -1,16 +1,18 @@
-﻿@model List<Asignatura>
+﻿@model Alumno
 
 @{
-    ViewData["Title"] = "Asignatura information";
+    ViewData["Title"] = "Alumno information";
     Layout = "_Simple";
 }
 <h1>@ViewData["Title"]</h1>
 <div class="text-left">
     <strong>Desde la vista normal</strong>
-@foreach (var Asig in Model)
-{
-  @await Html.PartialAsync("~/Views/Shared/_ObjetoSchoolSimple.cshtml", Asig)
-}
+    <p>
+        Name Asignatura: @Model.Name <br>
+        Id: @Model.UniqueId
+    </p>
+    <strong>Desde la vista parcial</strong>
+    @await Html.PartialAsync("~/Views/Shared/_ObjetoSchoolSimple.cshtml")
 </div>
 
 
