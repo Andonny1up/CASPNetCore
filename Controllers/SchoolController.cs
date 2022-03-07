@@ -8,7 +8,11 @@ namespace CASPNetCore.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var school = new School();
+            school.YearF = 2005;
+            school.SchoolId = Guid.NewGuid().ToString();
+            school.Name = "Juan Ardaya";
+            return View(school);
         }
     }
 }
