@@ -12,6 +12,10 @@ namespace CASPNetCore.Controllers
             school.YearF = 2005;
             school.UniqueId = Guid.NewGuid().ToString();
             school.Name = "Juan Ardaya";
+            school.Ciudad = "Trini city";
+            school.Pais = "Bolivia";
+            school.TipoEscuela = TiposEscuela.Secundaria;
+            school.Dirrecion = "Enrique Egobiano";
 
             ViewBag.CosaDinamica = "La Monja";
             return View(school);
