@@ -7,13 +7,8 @@
 <h1>@ViewData["Title"]</h1>
 <div class="text-left">
     <strong>Desde la vista normal</strong>
-@foreach (var Asig in Model)
-{
-  @await Html.PartialAsync("~/Views/Shared/_ObjetoSchoolSimple.cshtml", Asig)
-}
-</div>
-
-
+    @await Html.PartialAsync("~/Views/Shared/_ListObjetoSchool.cshtml")
+    
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>@ViewBag.CosaDinamica</p>
