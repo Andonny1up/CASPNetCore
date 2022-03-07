@@ -10,7 +10,7 @@ namespace CASPNetCore.Controllers
         {
             var school = new School();
             school.YearF = 2005;
-            school.SchoolId = Guid.NewGuid().ToString();
+            school.UniqueId = Guid.NewGuid().ToString();
             school.Name = "Juan Ardaya";
 
             ViewBag.CosaDinamica = "La Monja";
