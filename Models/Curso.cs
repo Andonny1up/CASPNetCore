@@ -10,6 +10,7 @@ namespace CASPNetCore.Models
         public List<Alumno> Alumnos{ get; set; }
 
         public string Dirrecion { get; set; }
-        
+        public string SchoolId { get; set; }
+        public School school { get; set; }
     }
 }

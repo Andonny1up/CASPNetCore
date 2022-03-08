@@ -5,6 +5,8 @@ namespace CASPNetCore.Models
 {
     public class Alumno: ObjetoEscuelaBase
     {
-        public List<Evaluacion> Evaluaciones {get; set;} = new List<Evaluacion>();
+        public List<Evaluacion> Evaluaciones {get; set;}
+        public string CursoId { get; set; }
+        public Curso curso { get; set; }
     }
 }
