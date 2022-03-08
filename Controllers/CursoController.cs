@@ -36,13 +36,20 @@ namespace CASPNetCore.Controllers
         [HttpPost]
         public IActionResult Create(Curso curso)
         {
+            curso.Id = Guid.NewGuid().ToString();
             ViewBag.Fecha = DateTime.Now;
             var scuela = _context.Escuelas.FirstOrDefault();
-            curso.Id = Guid.NewGuid().ToString();
             curso.SchoolId = scuela.Id;
-            _context.cursos.Add(curso);
-            _context.SaveChanges();
-            return View();
+            if (curso.Name != null)
+            {
+                _context.cursos.Add(curso);
+                _context.SaveChanges();
+                ViewBag.MensajeExtra = "Curso Creado";
+                return View("Index",curso);
+            }
+            else{
+                return View();
+            }
         }
         private SchoolContext _context;
         public CursoController(SchoolContext context)
