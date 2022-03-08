@@ -1,7 +1,12 @@
+using CASPNetCore.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//Añadi el servicio de la base da datos
+builder.Services.AddDbContext<SchoolContext>(options => options.UseInMemoryDatabase("testDB"));
 
 var app = builder.Build();
 
