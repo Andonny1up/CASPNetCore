@@ -8,9 +8,19 @@ namespace CASPNetCore.Controllers
 {
     public class AlumnoController : Controller
     {
-        public IActionResult Index()
+        [Route("Alumno/Index/{alumnoId?}")]
+        public IActionResult Index(string alumnoId)
         {
-            return View(_context.Alumnos.FirstOrDefault());
+            if(!string.IsNullOrWhiteSpace(alumnoId)){
+                var alumno = from alumn in _context.Alumnos
+                where alumn.Id == alumnoId
+                select alumn;
+                return View(alumno.SingleOrDefault());
+            }else{
+                return View("MultiAlum",_context.Alumnos);
+            }
+            
+
         }
         public IActionResult MultiAlum()
         {

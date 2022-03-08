@@ -1,0 +1,23 @@
+﻿@model Curso
+
+@{
+    ViewData["Title"] = "Curso information";
+    Layout = "_Simple";
+}
+<h1>@ViewData["Title"]</h1>
+<div class="text-left">
+    <strong>Desde la vista normal</strong>
+    <p>
+        Name Curso: @Model.Name <br>
+        Id: @Model.Id
+    </p>
+    <strong>Desde la vista parcial</strong>
+    @await Html.PartialAsync("~/Views/Shared/_ObjetoSchoolSimple.cshtml")
+</div>
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>@ViewBag.CosaDinamica</p>
+    <p>@ViewData["Fecha"]</p>
+</div>

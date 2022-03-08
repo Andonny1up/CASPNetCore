@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Curso>
+
+@{
+    ViewData["Title"] = "Curso information";
+    Layout = "_Simple";
+}
+<h1>@ViewData["Title"]</h1>
+<div class="text-left">
+    <strong>Desde la vista normal</strong>
+    @await Html.PartialAsync("~/Views/Shared/_ListObjetoSchool.cshtml")
+    @*@foreach (var Alum in Model)
+    {
+        @await Html.PartialAsync("~/Views/Shared/_ObjetoSchoolSimple.cshtml", Alum)
+    }*@
+</div>
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>@ViewBag.CosaDinamica</p>
+    <p>@ViewData["Fecha"]</p>
+</div>
