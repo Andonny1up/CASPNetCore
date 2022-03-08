@@ -8,39 +8,18 @@ namespace CASPNetCore.Controllers
     {
         public IActionResult Index()
         {
-
-            return View( new Asignatura {
-                    Name = "Matemáticas",
-                    Id = Guid.NewGuid ().ToString ()
-                });
+            return View(_context.Asignaturas.FirstOrDefault());
         }
         public IActionResult MultiAsig()
         {
-            var listaAsignaturas = new List<Asignatura> () {
-                new Asignatura {
-                    Name = "Matemáticas",
-                    Id = Guid.NewGuid ().ToString ()
-                },
-                new Asignatura {
-                    Name = "Educación Física",
-                    Id = Guid.NewGuid ().ToString ()
-                },
-                    new Asignatura {
-                    Name = "Castellano",
-                    Id = Guid.NewGuid ().ToString ()
-                },
-                new Asignatura {
-                    Name = "Ciencias Naturales",
-                    Id = Guid.NewGuid ().ToString ()
-                },
-                new Asignatura {
-                    Name = "Programacion",
-                    Id = Guid.NewGuid ().ToString ()
-                }
-            };
             ViewBag.CosaDinamica = "La Monja";
             ViewBag.Fecha = DateTime.Now;
-            return View("MultiAsig",listaAsignaturas);
+            return View("MultiAsig",_context.Asignaturas);
+        }
+        private SchoolContext _context;
+        public AsignaturaController(SchoolContext context)
+        {
+            _context = context;
         }
     }
 }

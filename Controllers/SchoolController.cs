@@ -7,7 +7,6 @@ namespace CASPNetCore.Controllers
 {
     public class SchoolController : Controller
     {
-        private SchoolContext _context;
         public IActionResult Index()
         {
             /*var school = new School();
@@ -23,6 +22,7 @@ namespace CASPNetCore.Controllers
             ViewBag.CosaDinamica = "La Monja";
             return View(school);
         }
+        private SchoolContext _context;
         public SchoolController(SchoolContext context)
         {
             _context = context;
