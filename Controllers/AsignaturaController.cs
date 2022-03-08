@@ -6,9 +6,19 @@ namespace CASPNetCore.Controllers
 {
     public class AsignaturaController : Controller
     {
-        public IActionResult Index()
+        [Route("Asignatura/Index/{asignaturaId?}")]
+        public IActionResult Index(string asignaturaId)
         {
-            return View(_context.Asignaturas.FirstOrDefault());
+            if(!string.IsNullOrWhiteSpace(asignaturaId)){
+                var asignatura = from asig in _context.Asignaturas
+                where asig.Id == asignaturaId
+                select asig;
+                return View(asignatura.SingleOrDefault());
+            }else{
+                return View("MultiAsig",_context.Asignaturas);
+            }
+            
+
         }
         public IActionResult MultiAsig()
         {
