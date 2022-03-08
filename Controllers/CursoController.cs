@@ -28,6 +28,22 @@ namespace CASPNetCore.Controllers
             ViewBag.Fecha = DateTime.Now;
             return View("MultiCurso",_context.cursos);
         }
+        public IActionResult Create()
+        {
+            ViewBag.Fecha = DateTime.Now;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Curso curso)
+        {
+            ViewBag.Fecha = DateTime.Now;
+            var scuela = _context.Escuelas.FirstOrDefault();
+            curso.Id = Guid.NewGuid().ToString();
+            curso.SchoolId = scuela.Id;
+            _context.cursos.Add(curso);
+            _context.SaveChanges();
+            return View();
+        }
         private SchoolContext _context;
         public CursoController(SchoolContext context)
         {
