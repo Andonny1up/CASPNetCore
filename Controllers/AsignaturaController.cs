@@ -11,7 +11,7 @@ namespace CASPNetCore.Controllers
 
             return View( new Asignatura {
                     Name = "Matemáticas",
-                    UniqueId = Guid.NewGuid ().ToString ()
+                    Id = Guid.NewGuid ().ToString ()
                 });
         }
         public IActionResult MultiAsig()
@@ -19,23 +19,23 @@ namespace CASPNetCore.Controllers
             var listaAsignaturas = new List<Asignatura> () {
                 new Asignatura {
                     Name = "Matemáticas",
-                    UniqueId = Guid.NewGuid ().ToString ()
+                    Id = Guid.NewGuid ().ToString ()
                 },
                 new Asignatura {
                     Name = "Educación Física",
-                    UniqueId = Guid.NewGuid ().ToString ()
+                    Id = Guid.NewGuid ().ToString ()
                 },
                     new Asignatura {
                     Name = "Castellano",
-                    UniqueId = Guid.NewGuid ().ToString ()
+                    Id = Guid.NewGuid ().ToString ()
                 },
                 new Asignatura {
                     Name = "Ciencias Naturales",
-                    UniqueId = Guid.NewGuid ().ToString ()
+                    Id = Guid.NewGuid ().ToString ()
                 },
                 new Asignatura {
                     Name = "Programacion",
-                    UniqueId = Guid.NewGuid ().ToString ()
+                    Id = Guid.NewGuid ().ToString ()
                 }
             };
             ViewBag.CosaDinamica = "La Monja";
