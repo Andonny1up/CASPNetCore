@@ -40,7 +40,8 @@ namespace CASPNetCore.Controllers
             ViewBag.Fecha = DateTime.Now;
             var scuela = _context.Escuelas.FirstOrDefault();
             curso.SchoolId = scuela.Id;
-            if (curso.Name != null)
+            curso.school = scuela;
+            if (ModelState.IsValid)
             {
                 _context.cursos.Add(curso);
                 _context.SaveChanges();
@@ -49,6 +50,39 @@ namespace CASPNetCore.Controllers
             }
             else{
                 return View();
+            }
+        }
+         public IActionResult Update () {
+            ViewBag.Fecha = DateTime.Now;
+
+            return View ();
+        }
+        [HttpPost]
+        public IActionResult Update (Curso curso) {
+            ViewBag.Fecha = DateTime.Now;
+
+            if (ModelState.IsValid) {
+                Curso cursoDb = _context.cursos.Where (c => c.Id == curso.Id).SingleOrDefault ();
+                if (cursoDb == null || string.IsNullOrWhiteSpace (cursoDb.Id)) {
+                    ViewBag.MensajeExtra = "El curso no existe. Compruebe el ID.";
+
+                    return View (curso);
+                }
+                var escuela = _context.Escuelas.FirstOrDefault ();
+                if (curso.SchoolId != cursoDb.SchoolId) 
+                    cursoDb.SchoolId = curso.SchoolId;
+                if (curso.Name != cursoDb.Name)
+                    cursoDb.Name = curso.Name;
+                if (curso.Jornada != cursoDb.Jornada)
+                    cursoDb.Jornada = curso.Jornada;
+
+                _context.cursos.Update (cursoDb);
+                _context.SaveChanges ();
+                ViewBag.MensajeExtra = "Curso actualizado";
+
+                return View ("Index", curso);
+            } else {
+                return View (curso);
             }
         }
         private SchoolContext _context;

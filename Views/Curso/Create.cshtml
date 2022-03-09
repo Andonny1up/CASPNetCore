@@ -5,8 +5,8 @@
     Layout = "_Simple";
 }
 <h1>@ViewData["Title"]</h1>
+<div asp-validation-summary="All"></div>
 <div class="text-center">
-    <div> asp-validation-summary="All"</div>
     <form method="POST">
         <div>
             <label asp-for="Name"></label>
