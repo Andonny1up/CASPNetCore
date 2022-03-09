@@ -8,8 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 //Añadi el servicio de la base da datos
 builder.Services.AddDbContext<SchoolContext>(options => options.UseInMemoryDatabase("testDB"));
+//Nueva base de datos in azure
+//string connString = builder.Configuration.GetConnectionString("DefaultConnectionString");
+//builder.Services.AddDbContext<SchoolContext>(options => options.UseSqlServer(connString));
 
 var app = builder.Build();
+
+
 
 //Nuevo para asegurarse que la base este creada
 using(var scope=app.Services.CreateScope()){
